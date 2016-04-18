@@ -1,0 +1,8 @@
+
+*.class
+
+*.class
+
+out/artifacts/Java_RESTful_WebService_war_exploded/WEB-INF/classes/com/restfulservices/HelloWorld.class
+
+*.class
