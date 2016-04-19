@@ -9,9 +9,7 @@ import com.sun.jersey.api.client.WebResource;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
 
-/**
- * Created by aliabbasjaffri on 20/04/2016.
- */
+
 public class ClientEnd
 {
     public static void main(String[] args) {
