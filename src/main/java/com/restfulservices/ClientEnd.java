@@ -36,9 +36,7 @@ public class ClientEnd
         } catch (Exception e) {
 
             e.printStackTrace();
-
         }
-
     }
 
     private static URI getBaseURI() {
