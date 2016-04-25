@@ -1,10 +1,8 @@
 package com.restfulservices;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("/ctofservice")
 public class CtoFService {
@@ -20,14 +18,18 @@ public class CtoFService {
         return "<ctofservice>" + "<celsius>" + celsius + "</celsius>" + "<ctofoutput>" + result + "</ctofoutput>" + "</ctofservice>";
     }
 
-    @Path("{c}")
-    @GET
+    @Path("/reply")
+    @POST
     @Produces(MediaType.APPLICATION_XML)
-    public String convertCtoFfromInput(@PathParam("c") Double c) {
+    public Response reply( @FormParam("val") Double val)
+    {
         Double fahrenheit;
-        fahrenheit = ((c * 9) / 5) + 32;
-
+        fahrenheit = ((val * 9) / 5) + 32;
         String result = "@Produces(\"application/xml\") Output: \n\nC to F Converter Output: \n\n" + fahrenheit;
-        return "<ctofservice>" + "<celsius>" + c + "</celsius>" + "<ctofoutput>" + result + "</ctofoutput>" + "</ctofservice>";
+        String finalResult = "<ctofservice>" + "<celsius>" + val + "</celsius>" + "<ctofoutput>" + result + "</ctofoutput>" + "</ctofservice>";
+        return Response.status(200)
+                .entity(finalResult)
+                .build();
+
     }
 }

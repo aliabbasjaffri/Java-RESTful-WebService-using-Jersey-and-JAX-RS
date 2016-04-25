@@ -1,9 +1,6 @@
 package com.restfulservices;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.json.JSONException;
@@ -27,18 +24,19 @@ public class FtoCService {
         return Response.status(200).entity(result).build();
     }
 
-    @Path("{f}")
-    @GET
+    @Path("/reply")
+    @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response convertFtoCfromInput(@PathParam("f") float f) throws JSONException {
-
+    public Response reply( @FormParam("val") float val)
+    {
         JSONObject jsonObject = new JSONObject();
         float celsius;
-        celsius =  (f - 32)*5/9;
-        jsonObject.put("FarenheitValue", f);
+        celsius =  (val - 32)*5/9;
+        jsonObject.put("FarenheitValue", val);
         jsonObject.put("CelciusValue", celsius);
 
         String result = "@Produces(\"application/json\") Output: \n\nF to C Converter Output: \n\n" + jsonObject;
         return Response.status(200).entity(result).build();
+
     }
 }

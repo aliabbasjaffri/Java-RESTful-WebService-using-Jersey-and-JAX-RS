@@ -31,6 +31,12 @@
 
     <servlet-mapping>
         <servlet-name>Java-RESTful-WebService</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/json/*</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+
 </web-app>
